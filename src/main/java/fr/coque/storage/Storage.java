@@ -1,5 +1,7 @@
-package fr.coque;
+package fr.coque.storage;
 
+
+import fr.coque.User;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -15,6 +17,10 @@ public class Storage {
 
 	public static User getUser(String name) {
 		return users.get(name);
+	}
+
+	public static int getUserId(String name){
+		return users.get(name).getId();
 	}
 
 	public static void deleteUser(String name) {

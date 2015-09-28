@@ -29,6 +29,6 @@ http://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/ja
         </jaxrs:serviceBeans>
     </jaxrs:server>
 
-    <bean id="genSvc" class="fr.coque.UserService"/>
+    <bean id="genSvc" class="fr.coque.services.UserService"/>
 
 </blueprint>

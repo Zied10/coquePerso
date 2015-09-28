@@ -1,5 +1,7 @@
-package fr.coque;
+package fr.coque.services;
 
+import fr.coque.storage.Storage;
+import fr.coque.User;
 import org.json.JSONArray;
 
 import javax.ws.rs.*;
@@ -32,6 +34,16 @@ public class UserService {
 			result.put(g.getName());
 		}
 		return Response.ok().entity(result.toString(2)).build();
+	}
+
+	@Path("/{name}")
+	@GET
+	public Response getUserId(@PathParam("name") String name) {
+		if(Storage.getUser(name) == null) {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}
+		int value = Storage.getUserId(name);
+		return Response.ok().entity("\""+value+"\"").build();
 	}
 
 
