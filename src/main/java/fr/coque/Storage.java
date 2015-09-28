@@ -27,7 +27,9 @@ public class Storage {
 
 
 	static {
-		Storage.create("demogen");
+		Storage.create("zizou");
+		Storage.create("marco");
+		Storage.create("jpp");
 	}
 
 }

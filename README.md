@@ -164,7 +164,7 @@ Web services deployed on top of ServiceMix are available under the `cxf` url pre
 
 We exposed the service using the `demo` URL prefix, and the initial resource is `generators`. Thus, our service is available at the following URL: 
 
-    azrael:rest mosser$ curl -w "\n" http://localhost:8181/cxf/demo/generators/
+    azrael:rest mosser$ curl -w "\n" http://localhost:8181/cxf/demo/users/
     ["demogen"]
 
  
