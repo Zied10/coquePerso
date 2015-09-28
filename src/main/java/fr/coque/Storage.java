@@ -25,11 +25,31 @@ public class Storage {
 		return users.values();
 	}
 
+	private static HashMap<Integer, Commande> commandes = new HashMap<Integer, Commande>();
+
+	public static void createCommande(Integer commandeId, int userId){
+		commandes.put(commandeId, new Commande(userId));
+	}
+
+	public static Collection<Commande> getAllCommandes(){
+		return commandes.values();
+	}
+
+	public static Commande getCommandeFromId(int id){
+		return commandes.get(id);
+	}
+
+	public static void deleteCommande(int id) {
+		commandes.remove(id);
+	}
+
 
 	static {
 		Storage.createUser("zizou");
 		Storage.createUser("marco");
 		Storage.createUser("jpp");
-	}
 
+		Storage.createCommande(Commande.getIdent(), 7442);
+		Storage.createCommande(Commande.getIdent(), 1234);
+	}
 }
