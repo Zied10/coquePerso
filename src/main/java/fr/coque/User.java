@@ -4,11 +4,13 @@ package fr.coque;
 public class User {
 
 	private String name;
-	private static int id = 0;
+	private int id;
+	private static int nbUserTotal = 0;
 
 	public User(String s) {
 		this.name = s;
-		id++;
+		id = nbUserTotal;
+		nbUserTotal++;
 	}
 
 	public String getName() {
