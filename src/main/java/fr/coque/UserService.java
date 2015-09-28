@@ -15,18 +15,18 @@ public class UserService {
 	@POST
 	@Consumes(MediaType.TEXT_PLAIN)
 	public Response createNewUser(String name) {
-	    if(Storage.read(name) != null) {
+	    if(Storage.getUser(name) != null) {
 			return Response.status(Response.Status.CONFLICT)
 					       .entity("\"Existing name " + name + "\"")
 					       .build();
 		}
-		Storage.create(name);
+		Storage.createUser(name);
 		return Response.ok().build();
 	}
 
 	@GET
 	public Response getAllUser() {
-		Collection<User> gens = Storage.findAll();
+		Collection<User> gens = Storage.getAllUsers();
 		JSONArray result = new JSONArray();
 		for(User g: gens) {
 			result.put(g.getName());
@@ -38,10 +38,10 @@ public class UserService {
 	@Path("/{name}")
 	@DELETE
 	public Response deleteUser(@PathParam("name") String name) {
-		if(Storage.read(name) == null) {
+		if(Storage.getUser(name) == null) {
 			return Response.status(Response.Status.NOT_FOUND).build();
 		}
-		Storage.delete(name);
+		Storage.deleteUser(name);
 		return Response.ok().build();
 	}
 
