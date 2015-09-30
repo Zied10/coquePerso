@@ -64,4 +64,25 @@ public class CommandeService {
         Storage.deleteCommande(id);
         return Response.ok().build();
     }
+
+    @Path("/{id}/state")
+    @GET
+    public Response getState(@PathParam("id") int id) {
+        if(Storage.getCommandeFromId(id) == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        Commande commande = Storage.getCommandeFromId(id);
+        return Response.ok().entity(commande.getState()).build();
+    }
+
+    @Path("/{id}/{state}")
+    @PUT
+    public Response getState(@PathParam("id") int id, @PathParam("state") int state) {
+        if(Storage.getCommandeFromId(id) == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        Commande commande = Storage.getCommandeFromId(id);
+        commande.setState(state);
+        return Response.ok().build();
+    }
 }

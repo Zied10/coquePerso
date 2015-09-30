@@ -6,8 +6,9 @@ package fr.coque;
 public class Commande {
 
     private int userId;
-    private int id = 0;
+    private int id;
     private static int nbCommandesTotale = 0;
+    private int state;
     private String address;
     private int numCard;
     private String expirationDate;
@@ -17,6 +18,7 @@ public class Commande {
         this.userId = userId;
         this.id = this.nbCommandesTotale;
         this.nbCommandesTotale++;
+        state = 0;
         this.address = address;
         this.numCard = numCard;
         this.expirationDate = expirationDate;
@@ -49,5 +51,13 @@ public class Commande {
 
     public static Integer getIdent(){
         return nbCommandesTotale;
+    }
+
+    public void setState(int newState){
+        state = newState;
+    }
+
+    public int getState(){
+        return state;
     }
 }
