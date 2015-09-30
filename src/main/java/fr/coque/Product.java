@@ -4,19 +4,25 @@ package fr.coque;
  * Created by Zizou on 28/09/2015.
  */
 public class Product {
-    private int idModel;
-    private int idMotif;
+    private Model model;
+    private Motif motif;
+    private float price;
+    private int id;
+    private static int generatedId = 1;
 
-    public Product(int idModel, int idMotif){
-        this.idModel = idModel;
-        this.idMotif = idMotif;
+    public Product(Model model, Motif motif){
+        this.model = model;
+        this.motif = motif;
+        price = model.getPrice() + motif.getPrice();
+        id = generatedId;
+        generatedId++;
     }
 
-    public int getIdModel() {
-        return idModel;
+    public float getPrice(){
+        return price;
     }
 
-    public int getIdMotif() {
-        return idMotif;
+    public int getId(){
+        return id;
     }
 }
