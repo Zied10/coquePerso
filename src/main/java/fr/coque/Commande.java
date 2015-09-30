@@ -6,13 +6,15 @@ package fr.coque;
 public class Commande {
 
     private int userId;
-    private int id = 0;
+    private int id;
     private static int nbCommandesTotale = 0;
+    private int state;
 
     public Commande(int userId){
         this.userId = userId;
         this.id = this.nbCommandesTotale;
         this.nbCommandesTotale++;
+        state = 0;
     }
 
     public int getId(){
@@ -25,5 +27,13 @@ public class Commande {
 
     public static Integer getIdent(){
         return nbCommandesTotale;
+    }
+
+    public void setState(int newState){
+        state = newState;
+    }
+
+    public int getState(){
+        return state;
     }
 }
