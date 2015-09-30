@@ -19,10 +19,14 @@ public class CommandeService {
 
 
     @POST
-    @Path("/{clientId}/{address}")
-    public Response createNewCommande(@PathParam("clientId") int clientId, @PathParam("address") String address) {
+    @Path("/{clientId}/{address}/{numCard}/{expirationDate}/{pictogram}")
+    public Response createNewCommande(@PathParam("clientId") int clientId,
+                                      @PathParam("address") String address,
+                                      @PathParam("numCard") int numCard,
+                                      @PathParam("expirationDate") String expirationDate,
+                                      @PathParam("pictogram") int pictogram) {
 
-        Storage.createCommande(Commande.getIdent(), clientId, address);
+        Storage.createCommande(Commande.getIdent(), clientId, address, numCard, expirationDate, pictogram);
         return Response.ok().build();
     }
 
@@ -34,6 +38,9 @@ public class CommandeService {
             result.put(c.getId());
             result.put(c.getUserId());
             result.put(c.getAddress());
+            result.put(c.getNumCard());
+            result.put(c.getExpirationDate());
+            result.put(c.getPictogram());
         }
         return Response.ok().entity(result.toString(2)).build();
     }
