@@ -9,12 +9,14 @@ public class Commande {
     private int id;
     private static int nbCommandesTotale = 0;
     private int state;
+    private String address;
 
-    public Commande(int userId){
+    public Commande(int userId, String address){
         this.userId = userId;
         this.id = this.nbCommandesTotale;
         this.nbCommandesTotale++;
         state = 0;
+        this.address = address;
     }
 
     public int getId(){
@@ -23,6 +25,10 @@ public class Commande {
 
     public int getUserId(){
         return userId;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     public static Integer getIdent(){

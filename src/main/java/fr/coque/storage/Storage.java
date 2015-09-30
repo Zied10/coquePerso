@@ -34,8 +34,8 @@ public class Storage {
 
 	private static HashMap<Integer, Commande> commandes = new HashMap<Integer, Commande>();
 
-	public static void createCommande(Integer commandeId, int userId){
-		commandes.put(commandeId, new Commande(userId));
+	public static void createCommande(Integer commandeId, int userId, String address){
+		commandes.put(commandeId, new Commande(userId, address));
 	}
 
 	public static Collection<Commande> getAllCommandes(){
@@ -56,7 +56,7 @@ public class Storage {
 		Storage.createUser("marco");
 		Storage.createUser("jpp");
 
-		Storage.createCommande(Commande.getIdent(), 2);
-		Storage.createCommande(Commande.getIdent(), 3);
+		Storage.createCommande(Commande.getIdent(), 2, "55 rue barla");
+		Storage.createCommande(Commande.getIdent(), 3, "50 rue barla");
 	}
 }
