@@ -17,12 +17,23 @@ import java.util.Collection;
 @Produces(MediaType.APPLICATION_JSON)
 public class CommandeService {
 
+
+    @POST
+    @Path("/{clientId}/{address}")
+    public Response createNewCommande(@PathParam("clientId") int clientId, @PathParam("address") String address) {
+
+        Storage.createCommande(Commande.getIdent(), clientId, address);
+        return Response.ok().build();
+    }
+
     @GET
     public Response getAllCommandes() {
         Collection<Commande> commandes = Storage.getAllCommandes();
         JSONArray result = new JSONArray();
         for(Commande c: commandes) {
             result.put(c.getId());
+            result.put(c.getUserId());
+            result.put(c.getAddress());
         }
         return Response.ok().entity(result.toString(2)).build();
     }
