@@ -17,18 +17,14 @@ import java.util.Collection;
 @Produces(MediaType.APPLICATION_JSON)
 public class CommandeService {
 
-
     @POST
-    @Path("/{clientId}/{address}/{numCard}/{expirationDate}/{pictogram}")
-    public Response createNewCommande(@PathParam("clientId") int clientId,
-                                      @PathParam("address") String address,
-                                      @PathParam("numCard") int numCard,
-                                      @PathParam("expirationDate") String expirationDate,
-                                      @PathParam("pictogram") int pictogram) {
+    public Response createNewCommande(String jsonInput) {
 
         Storage.createCommande(Commande.getIdent(), clientId, address, numCard, expirationDate, pictogram);
         return Response.ok().build();
     }
+
+
 
     @GET
     public Response getAllCommandes() {
@@ -54,6 +50,7 @@ public class CommandeService {
         Commande commande = Storage.getCommandeFromId(id);
         return Response.ok().entity(commande.getUserId()).build();
     }
+
 
     @Path("/{id}")
     @DELETE
