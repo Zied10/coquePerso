@@ -29,6 +29,9 @@ public class CommandeService {
             result.put(c.getId());
             result.put(c.getUserId());
             result.put(c.getAddress());
+            result.put(c.getNumCard());
+            result.put(c.getExpirationDate());
+            result.put(c.getPictogram());
         }
         return Response.ok().entity(result.toString(2)).build();
     }

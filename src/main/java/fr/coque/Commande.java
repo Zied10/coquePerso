@@ -14,8 +14,11 @@ public class Commande {
     private String address;
     private List<Product> products;
     private float price;
+    private int numCard;
+    private String expirationDate;
+    private int pictogram;
 
-    public Commande(int userId, String address, List<Product> products){
+    public Commande(int userId, String address, List<Product> products, int numCard, String expirationDate, int pictogram){
         this.userId = userId;
         this.id = this.nbCommandesTotale;
         this.nbCommandesTotale++;
@@ -23,6 +26,9 @@ public class Commande {
         this.address = address;
         this.products = products;
         price = computeProductPrice();
+        this.numCard = numCard;
+        this.expirationDate = expirationDate;
+        this.pictogram = pictogram;
     }
 
     public int getId(){
@@ -35,6 +41,18 @@ public class Commande {
 
     public String getAddress() {
         return address;
+    }
+
+    public int getNumCard() {
+        return numCard;
+    }
+
+    public String getExpirationDate() {
+        return expirationDate;
+    }
+
+    public int getPictogram() {
+        return pictogram;
     }
 
     public static Integer getIdent(){
