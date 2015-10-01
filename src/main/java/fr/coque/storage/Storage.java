@@ -89,7 +89,7 @@ public class Storage {
 		products2.add(samsungS4Sonic);
 		products2.add(xperiaPeach);
 
-		Storage.createCommande(Commande.getIdent(), 2, "55 rue barla", products1, 1511522, "11/16", 632);
-		Storage.createCommande(Commande.getIdent(), 3, "50 rue barla", products2, 120215, "03/16", 552);
+		Storage.createCommande(Commande.getIdent(), 3, "666 rue barla", products2, 120215, "0316", 552);
+		Storage.createCommande(Commande.getIdent(), 3, "51 rue barla", products1, 120285, "0346", 111);
 	}
 }

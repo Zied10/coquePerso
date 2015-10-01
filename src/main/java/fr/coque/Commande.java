@@ -78,4 +78,16 @@ public class Commande {
         }
         return total;
     }
+
+    public String toString(){
+       return "{" +
+                "\"id\":" + getId() + "," +
+                "\"userId\":" + getUserId() + "," +
+                "\"address\":" + getAddress() + "," +
+                "\"numCard\":" + getNumCard() + "," +
+                "\"expirationDate\":" + getExpirationDate() + "," +
+                "\"pictogram\":" + getPictogram() + "," +
+                "\"price\":" + getPrice() +
+                "}";
+    }
 }
