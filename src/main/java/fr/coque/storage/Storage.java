@@ -1,11 +1,12 @@
 package fr.coque.storage;
 
 
-import fr.coque.Commande;
-import fr.coque.User;
+import fr.coque.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 
 public class Storage {
 
@@ -34,8 +35,8 @@ public class Storage {
 
 	private static HashMap<Integer, Commande> commandes = new HashMap<Integer, Commande>();
 
-	public static void createCommande(Integer commandeId, int userId, String address){
-		commandes.put(commandeId, new Commande(userId, address));
+	public static void createCommande(Integer commandeId, int userId, String address, List<Product> products){
+		commandes.put(commandeId, new Commande(userId, address, products));
 	}
 
 	public static Collection<Commande> getAllCommandes(){
@@ -56,7 +57,39 @@ public class Storage {
 		Storage.createUser("marco");
 		Storage.createUser("jpp");
 
-		Storage.createCommande(Commande.getIdent(), 2, "55 rue barla");
-		Storage.createCommande(Commande.getIdent(), 3, "50 rue barla");
+		// Models
+		Model iphone4 = new Model(1, 8.5f);
+		Model iphone5 = new Model(2, 9.f);
+		Model iphone6 = new Model(3, 9.5f);
+		Model samsungS3 = new Model(4, 5.f);
+		Model samsungS4 = new Model(5, 6.f);
+		Model xperia = new Model(6, 7.f);
+
+		// Motifs
+		Motif mario = new Motif(1, 3.f);
+		Motif sonic = new Motif(2, 2.f);
+		Motif tetris = new Motif(3, 2.5f);
+		Motif luigi = new Motif(4, 1.f);
+		Motif peach = new Motif(5, 3.f);
+
+		// Products
+		Product iphone5Mario = new Product(iphone5, mario);
+		Product iphone4Sonic = new Product(iphone4, sonic);
+		Product samsungS3Mario = new Product(samsungS3, mario);
+		Product samsungS4Sonic = new Product(samsungS4, sonic);
+		Product xperiaPeach = new Product(xperia, peach);
+
+		// Products Lists
+		List<Product> products1 = new ArrayList<Product>();
+		List<Product> products2 = new ArrayList<Product>();
+		products1.add(iphone5Mario);
+		products1.add(iphone4Sonic);
+		products2.add(iphone4Sonic);
+		products2.add(samsungS3Mario);
+		products2.add(samsungS4Sonic);
+		products2.add(xperiaPeach);
+
+		Storage.createCommande(Commande.getIdent(), 2, "55 rue barla", products1);
+		Storage.createCommande(Commande.getIdent(), 3, "50 rue barla", products2);
 	}
 }

@@ -3,10 +3,14 @@ package fr.coque.services;
 import fr.coque.Commande;
 import fr.coque.storage.Storage;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Collection;
 
 /**
@@ -16,15 +20,6 @@ import java.util.Collection;
 // Here we generate JSON data from scratch, one should use a framework instead
 @Produces(MediaType.APPLICATION_JSON)
 public class CommandeService {
-
-
-    @POST
-    @Path("/{clientId}/{address}")
-    public Response createNewCommande(@PathParam("clientId") int clientId, @PathParam("address") String address) {
-
-        Storage.createCommande(Commande.getIdent(), clientId, address);
-        return Response.ok().build();
-    }
 
     @GET
     public Response getAllCommandes() {
@@ -45,7 +40,15 @@ public class CommandeService {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         Commande commande = Storage.getCommandeFromId(id);
-        return Response.ok().entity(commande.getUserId()).build();
+
+        JSONArray result = new JSONArray();
+        result.put(commande.getId());
+        result.put(commande.getPrice());
+        result.put(commande.getAddress());
+        result.put(commande.getState());
+        result.put(commande.getUserId());
+
+        return Response.ok().entity(result.toString(2)).build();
     }
 
     @Path("/{id}")
