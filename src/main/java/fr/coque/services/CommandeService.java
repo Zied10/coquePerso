@@ -26,7 +26,6 @@ public class CommandeService {
         Collection<Commande> commandes = Storage.getAllCommandes();
         JSONArray result = new JSONArray();
         for(Commande c: commandes) {
-
             result.put(new JSONObject(c.toString()));
         }
         return Response.ok().entity(result.toString(2)).build();
@@ -40,13 +39,6 @@ public class CommandeService {
         }
         Commande commande = Storage.getCommandeFromId(id);
         JSONObject result = new JSONObject(commande.toString());
-        /*JSONArray result = new JSONArray();
-        result.put(commande.getId());
-        result.put(commande.getPrice());
-        result.put(commande.getAddress());
-        result.put(commande.getState());
-        result.put(commande.getUserId());*/
-
         return Response.ok().entity(result.toString(2)).build();
     }
 
