@@ -35,8 +35,15 @@ public class Storage {
 
 	private static HashMap<Integer, Commande> commandes = new HashMap<Integer, Commande>();
 
-	public static void createCommande(Integer commandeId, int userId, String address, List<Product> products, int numCard, String expirationDate, int pictogram){
-		commandes.put(commandeId, new Commande(userId, address, products, numCard, expirationDate, pictogram));
+	public static void createCommande(Integer commandeId,
+									  int userId,
+									  String address,
+									  List<Product> products,
+									  int numCard,
+									  String expirationDate,
+									  int pictogram,
+									  int typeLivraison){
+		commandes.put(commandeId, new Commande(userId, address, products, numCard, expirationDate, pictogram, typeLivraison));
 	}
 
 	public static Collection<Commande> getAllCommandes(){
@@ -89,7 +96,7 @@ public class Storage {
 		products2.add(samsungS4Sonic);
 		products2.add(xperiaPeach);
 
-		Storage.createCommande(Commande.getIdent(), 3, "666 rue barla", products2, 120215, "0316", 552);
-		Storage.createCommande(Commande.getIdent(), 3, "51 rue barla", products1, 120285, "0346", 111);
+		Storage.createCommande(Commande.getIdent(), 1, "44 bd du mont boron", products1, 123456, "0116", 123, 0);
+		Storage.createCommande(Commande.getIdent(), 0, "41 av de la republique", products2, 654321, "0116", 456, 1);
 	}
 }
