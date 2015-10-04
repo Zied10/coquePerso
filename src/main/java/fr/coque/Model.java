@@ -6,16 +6,10 @@ package fr.coque;
 public class Model {
     private int id;
     private float price;
-    private String urlImage;
-    private String name;
-    private static int generatedId = 1;
 
-    public Model(String name, String urlImage, float price){
-        this.name = name;
-        this.urlImage = urlImage;
+    public Model(int id, float price){
         this.price = price;
-        this.id = generatedId;
-        generatedId++;
+        this.id = id;
     }
 
     public float getPrice(){
@@ -24,13 +18,5 @@ public class Model {
 
     public int getId(){
         return id;
-    }
-
-    public String getUrlImage(){
-        return urlImage;
-    }
-
-    public String getName(){
-        return name;
     }
 }

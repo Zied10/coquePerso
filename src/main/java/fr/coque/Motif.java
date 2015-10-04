@@ -4,19 +4,12 @@ package fr.coque;
  * Created by Marc on 30/09/2015.
  */
 public class Motif {
-
     private int id;
     private float price;
-    private String urlImage;
-    private String name;
-    private static int generatedId = 1;
 
-    public Motif(String name, String urlImage, float price){
-        this.name = name;
-        this.urlImage = urlImage;
+    public Motif(int id, float price){
         this.price = price;
-        this.id = generatedId;
-        generatedId++;
+        this.id = id;
     }
 
     public float getPrice(){
@@ -25,13 +18,5 @@ public class Motif {
 
     public int getId(){
         return id;
-    }
-
-    public String getUrlImage(){
-        return urlImage;
-    }
-
-    public String getName(){
-        return name;
     }
 }

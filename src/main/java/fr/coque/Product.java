@@ -1,25 +1,30 @@
 package fr.coque;
 
+import fr.coque.storage.Storage;
+
 /**
  * Created by Zizou on 28/09/2015.
  */
 public class Product {
-    private Model model;
-    private Motif motif;
+    private int modelId;
+    private int motifId;
     private float price;
     private int id;
     private static int generatedId = 1;
 
-    public Product(Model model, Motif motif){
-        this.model = model;
-        this.motif = motif;
-        price = model.getPrice() + motif.getPrice();
+    public Product(int modelId, int motifId){
+        this.modelId = modelId;
+        this.motifId = motifId;
         id = generatedId;
         generatedId++;
     }
 
     public float getPrice(){
         return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
     }
 
     public int getId(){
