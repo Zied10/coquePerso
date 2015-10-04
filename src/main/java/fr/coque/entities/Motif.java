@@ -1,13 +1,13 @@
-package fr.coque;
+package fr.coque.entities;
 
 /**
  * Created by Marc on 30/09/2015.
  */
-public class Model {
+public class Motif {
     private int id;
     private float price;
 
-    public Model(int id, float price){
+    public Motif(int id, float price){
         this.price = price;
         this.id = id;
     }

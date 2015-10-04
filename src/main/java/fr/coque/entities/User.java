@@ -1,4 +1,4 @@
-package fr.coque;
+package fr.coque.entities;
 
 
 public class User {

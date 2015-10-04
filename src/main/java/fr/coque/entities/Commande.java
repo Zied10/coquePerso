@@ -1,11 +1,9 @@
-package fr.coque;
+package fr.coque.entities;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 
 /**
  * Created by Marc on 28/09/2015.

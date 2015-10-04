@@ -1,9 +1,8 @@
 package fr.coque.storage;
 
 
-import fr.coque.*;
+import fr.coque.entities.*;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
