@@ -39,7 +39,9 @@ public class CommandeService {
 
         }
 
-        Storage.createCommande(Commande.getIdent(), jsonObj.getInt("clientId"), jsonObj.getString("address"), productList, jsonObj.getInt("numCard"), jsonObj.getString("expirationDate"), jsonObj.getInt("pictogram"));
+        Storage.createCommande(Commande.getIdent(), jsonObj.getInt("clientId"),
+                jsonObj.getString("address"), productList, jsonObj.getInt("numCard"),
+                jsonObj.getString("expirationDate"), jsonObj.getInt("pictogram"), jsonObj.getInt("livraison"));
         return Response.ok().build();
     }
 

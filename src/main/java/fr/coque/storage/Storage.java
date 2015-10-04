@@ -90,13 +90,6 @@ public class Storage {
 		Motif luigi = new Motif(4, 1.f);
 		Motif peach = new Motif(5, 3.f);
 
-		// Products
-		Product iphone5Mario = new Product(iphone5.getId(), mario.getId());
-		Product iphone4Sonic = new Product(iphone4.getId(), sonic.getId());
-		Product samsungS3Mario = new Product(samsungS3.getId(), mario.getId());
-		Product samsungS4Sonic = new Product(samsungS4.getId(), sonic.getId());
-		Product xperiaPeach = new Product(xperia.getId(), peach.getId());
-
 		modelStorage.put(iphone4.getId(), iphone4);
 		modelStorage.put(iphone5.getId(), iphone5);
 		modelStorage.put(xperia.getId(), xperia);
@@ -109,18 +102,5 @@ public class Storage {
 
 
 
-
-		// Products Lists
-		List<Product> products1 = new ArrayList<Product>();
-		List<Product> products2 = new ArrayList<Product>();
-		products1.add(iphone5Mario);
-		products1.add(iphone4Sonic);
-		products2.add(iphone4Sonic);
-		products2.add(samsungS3Mario);
-		products2.add(samsungS4Sonic);
-		products2.add(xperiaPeach);
-
-		Storage.createCommande(Commande.getIdent(), 1, "44 bd du mont boron", products1, 123456, "0116", 123, 0);
-		Storage.createCommande(Commande.getIdent(), 0, "41 av de la republique", products2, 654321, "0116", 456, 1);
 	}
 }
