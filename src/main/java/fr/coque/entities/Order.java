@@ -8,11 +8,11 @@ import java.util.List;
 /**
  * Created by Marc on 28/09/2015.
  */
-public class Commande {
+public class Order {
 
     private int userId;
     private int id;
-    private static int nbCommandesTotale = 0;
+    private static int nbOrdersTotale = 0;
     private int state;
     private String address;
     private List<Product> products;
@@ -21,19 +21,19 @@ public class Commande {
     private String expirationDate;
     private int pictogram;
     private int typeLivraison;
-    private String dateDeCommande;
+    private String dateDeOrder;
     private String dateDeLivraison;
 
-    public Commande(int userId,
-                    String address,
-                    List<Product> products,
-                    int numCard,
-                    String expirationDate,
-                    int pictogram,
-                    int typeLivraison){
+    public Order(int userId,
+                 String address,
+                 List<Product> products,
+                 int numCard,
+                 String expirationDate,
+                 int pictogram,
+                 int typeLivraison){
         this.userId = userId;
-        this.id = this.nbCommandesTotale;
-        this.nbCommandesTotale++;
+        this.id = this.nbOrdersTotale;
+        this.nbOrdersTotale++;
         state = 0;
         this.address = address;
         this.products = products;
@@ -41,12 +41,12 @@ public class Commande {
         this.expirationDate = expirationDate;
         this.pictogram = pictogram;
         this.typeLivraison = typeLivraison;
-        dateDeCommande = computeDateBeginCommande();
+        dateDeOrder = computeDateBeginOrder();
         dateDeLivraison = computeDateDeLivraison();
         price = computeProductPrice();
     }
 
-    public String computeDateBeginCommande(){
+    public String computeDateBeginOrder(){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         Calendar c = Calendar.getInstance();
         c.setTime(new Date());
@@ -90,7 +90,7 @@ public class Commande {
     }
 
     public static Integer getIdent(){
-        return nbCommandesTotale;
+        return nbOrdersTotale;
     }
 
     public void setState(int newState){
@@ -113,8 +113,8 @@ public class Commande {
         return total;
     }
 
-    public String getDateCommande(){
-        return dateDeCommande;
+    public String getDateOrder(){
+        return dateDeOrder;
     }
 
     public int getTypeLivraison(){
@@ -134,7 +134,7 @@ public class Commande {
                 "\"numCard\":" + getNumCard() + "," +
                 "\"expirationDate\":" + getExpirationDate() + "," +
                 "\"pictogram\":" + getPictogram() + "," +
-                "\"dateCommande\":" + getDateCommande() + "," +
+                "\"dateOrder\":" + getDateOrder() + "," +
                 "\"dateLivraison\":" + getDateLivraison() + "," +
                 "\"typeLivraison\":" + getTypeLivraison() + "," +
                 "\"price\":" + getPrice() +

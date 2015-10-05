@@ -32,9 +32,9 @@ public class Storage {
 		return users.values();
 	}
 
-	private static HashMap<Integer, Commande> commandes = new HashMap<Integer, Commande>();
+	private static HashMap<Integer, Order> orders = new HashMap<Integer, Order>();
 
-	public static void createCommande(Integer commandeId,
+	public static void createOrder(int orderId,
 									  int userId,
 									  String address,
 									  List<Product> products,
@@ -42,19 +42,19 @@ public class Storage {
 									  String expirationDate,
 									  int pictogram,
 									  int typeLivraison){
-		commandes.put(commandeId, new Commande(userId, address, products, numCard, expirationDate, pictogram, typeLivraison));
+		orders.put(orderId, new Order(userId, address, products, numCard, expirationDate, pictogram, typeLivraison));
 	}
 
-	public static Collection<Commande> getAllCommandes(){
-		return commandes.values();
+	public static Collection<Order> getAllOrders(){
+		return orders.values();
 	}
 
-	public static Commande getCommandeFromId(int id){
-		return commandes.get(id);
+	public static Order getOrderFromId(int id){
+		return orders.get(id);
 	}
 
-	public static void deleteCommande(int id) {
-		commandes.remove(id);
+	public static void deleteOrder(int id) {
+		orders.remove(id);
 	}
 
 
@@ -69,6 +69,29 @@ public class Storage {
 	public static Motif getMotifFromId(int id){
 		return motifStorage.get(id);
 	}
+
+	private static HashMap<Integer, Payment> payments = new HashMap<Integer, Payment>();
+
+	public static void createPayment(int orderId,
+									  int numCard,
+									  String expirationDate,
+									  int pictogram,
+									 float price) {
+		payments.put(orderId, new Payment(orderId, numCard, expirationDate, pictogram, price));
+	}
+
+	public static Collection<Payment> getAllPayment(){
+		return payments.values();
+	}
+
+	public static Payment getPaymentFromId(int id){
+		return payments.get(id);
+	}
+
+	public static void deletePayment(int id){
+		payments.remove(id);
+	}
+
 	static {
 		Storage.createUser("zizou");
 		Storage.createUser("marco");
