@@ -29,6 +29,7 @@ http://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/ja
             <ref component-id="order"/>
             <ref component-id="payment"/>
             <ref component-id="orderTracking"/>
+            <ref component-id="catalog"/>
         </jaxrs:serviceBeans>
     </jaxrs:server>
 
@@ -36,5 +37,6 @@ http://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/ja
     <bean id="order" class="fr.coque.services.OrderServiceImpl"/>
     <bean id="payment" class="fr.coque.services.PaymentServiceImpl"/>
     <bean id="orderTracking" class="fr.coque.services.OrderTrackingServiceImpl"/>
+    <bean id="catalog" class="fr.coque.services.CatalogServiceImpl"/>
 
 </blueprint>
