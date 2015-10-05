@@ -26,15 +26,19 @@ http://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/ja
     <jaxrs:server id="genService" address="/demo">
         <jaxrs:serviceBeans>
             <ref component-id="user"/>
-            <ref component-id="commande"/>
+            <ref component-id="order"/>
+            <ref component-id="payment"/>
             <ref component-id="orderTracking"/>
             <ref component-id="delivery"/>
+            <ref component-id="catalog"/>
         </jaxrs:serviceBeans>
     </jaxrs:server>
 
     <bean id="user" class="fr.coque.services.UserServiceImpl"/>
-    <bean id="commande" class="fr.coque.services.CommandeServiceImpl"/>
+    <bean id="order" class="fr.coque.services.OrderServiceImpl"/>
+    <bean id="payment" class="fr.coque.services.PaymentServiceImpl"/>
     <bean id="orderTracking" class="fr.coque.services.OrderTrackingServiceImpl"/>
     <bean id="delivery" class="fr.coque.services.DeliveriesServiceImpl"/>
+    <bean id="catalog" class="fr.coque.services.CatalogServiceImpl"/>
 
 </blueprint>

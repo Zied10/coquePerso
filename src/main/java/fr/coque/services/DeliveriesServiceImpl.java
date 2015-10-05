@@ -24,7 +24,7 @@ public class DeliveriesServiceImpl implements DeliveriesService {
                     .entity("\"Existing delivery " + orderId + "\"")
                     .build();
         }
-        if(Storage.getCommandeFromId(orderId) == null) {
+        if(Storage.getOrderFromId(orderId) == null) {
             return Response.status(Response.Status.CONFLICT)
                     .entity("\"Non Existing order " + orderId + "\"")
                     .build();
