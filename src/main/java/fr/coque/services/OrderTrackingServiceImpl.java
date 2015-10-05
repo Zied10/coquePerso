@@ -4,6 +4,7 @@ import fr.coque.entities.OrderTracking;
 import fr.coque.interfaces.OrderTrackingService;
 import fr.coque.storage.Storage;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import javax.ws.rs.core.Response;
 import java.util.Collection;
@@ -31,7 +32,7 @@ public class OrderTrackingServiceImpl implements OrderTrackingService {
         Collection<OrderTracking> orderTrackings = Storage.getAllOrderTrackings();
         JSONArray result = new JSONArray();
         for(OrderTracking o: orderTrackings) {
-            result.put(o.getState());
+            result.put(new JSONObject(o.toString()));
         }
         return Response.ok().entity(result.toString(2)).build();
     }

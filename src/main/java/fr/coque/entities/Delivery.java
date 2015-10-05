@@ -21,6 +21,7 @@ public class Delivery {
         this.deliveryType = deliveryType;
         departureDate = computeDepartureDate();
         arrivalDate = computeArrivalDate();
+        state = 0;
     }
 
     public String computeDepartureDate(){

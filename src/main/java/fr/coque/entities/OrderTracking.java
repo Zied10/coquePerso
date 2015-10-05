@@ -23,4 +23,11 @@ public class OrderTracking {
     public int getState(){
         return state;
     }
+
+    public String toString(){
+        return "{" +
+                "\"orderId\":" + getOrderId() + "," +
+                "\"state\":" + getState() +
+                "}";
+    }
 }

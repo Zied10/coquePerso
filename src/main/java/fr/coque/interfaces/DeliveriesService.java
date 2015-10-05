@@ -35,15 +35,15 @@ public interface DeliveriesService {
     @GET
     Response getArrivalDate(@PathParam("orderId") int orderId);
 
-    @Path("/{orderId}/{arrivalDate}")
+    @Path("/{orderId}/arrivalDate")
     @PUT
-    Response setArrivalDate(@PathParam("orderId") int orderId, @PathParam("arrivalDate") String arrivalDate);
+    Response setArrivalDate(@PathParam("orderId") int orderId, @QueryParam("arrivalDate") String arrivalDate);
 
     @Path("/{orderId}/state")
     @GET
     Response getState(@PathParam("orderId") int orderId);
 
-    @Path("/{orderId}/{state}")
+    @Path("/{orderId}/state")
     @PUT
-    Response setState(@PathParam("orderId") int orderId, @PathParam("state") int state);
+    Response setState(@PathParam("orderId") int orderId, @QueryParam("state") int state);
 }
