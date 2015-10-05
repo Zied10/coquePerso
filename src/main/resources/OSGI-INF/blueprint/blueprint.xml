@@ -28,11 +28,13 @@ http://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/ja
             <ref component-id="user"/>
             <ref component-id="order"/>
             <ref component-id="payment"/>
+            <ref component-id="orderTracking"/>
         </jaxrs:serviceBeans>
     </jaxrs:server>
 
     <bean id="user" class="fr.coque.services.UserServiceImpl"/>
     <bean id="order" class="fr.coque.services.OrderServiceImpl"/>
     <bean id="payment" class="fr.coque.services.PaymentServiceImpl"/>
+    <bean id="orderTracking" class="fr.coque.services.OrderTrackingServiceImpl"/>
 
 </blueprint>
