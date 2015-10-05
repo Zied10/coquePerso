@@ -9,6 +9,24 @@ import java.util.List;
 
 public class Storage {
 
+	private static HashMap<Integer, OrderTracking> orderTrackings = new HashMap<Integer, OrderTracking>();
+
+	public static void createOrderTracking(int orderId){
+		orderTrackings.put(orderId, new OrderTracking(orderId));
+	}
+
+	public static OrderTracking getOrderTracking(int orderId){
+		return orderTrackings.get(orderId);
+	}
+
+	public static Collection<OrderTracking> getAllOrderTrackings(){
+		return orderTrackings.values();
+	}
+
+	public static void deleteOrderTracking(int id) {
+		orderTrackings.remove(id);
+	}
+
 	// this mocks a database.
 	private static HashMap<String, User> users = new HashMap<String, User>();
 
@@ -98,8 +116,5 @@ public class Storage {
 		motifStorage.put(sonic.getId(), sonic);
 		motifStorage.put(tetris.getId(), tetris);
 		motifStorage.put(peach.getId(), peach);
-
-
-
 	}
 }

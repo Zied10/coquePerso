@@ -1,7 +1,5 @@
 package fr.coque.entities;
 
-import fr.coque.storage.Storage;
-
 /**
  * Created by Zizou on 28/09/2015.
  */

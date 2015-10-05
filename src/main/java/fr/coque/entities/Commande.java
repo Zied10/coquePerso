@@ -23,7 +23,7 @@ public class Commande {
     private int typeLivraison;
     private String dateDeCommande;
     private String dateDeLivraison;
-
+// discerner les ressources : commande, payer, suivre la commande, livraison
     public Commande(int userId,
                     String address,
                     List<Product> products,
