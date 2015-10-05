@@ -1,7 +1,6 @@
 package fr.coque.services;
 
 import fr.coque.entities.OrderTracking;
-import fr.coque.entities.User;
 import fr.coque.interfaces.OrderTrackingService;
 import fr.coque.storage.Storage;
 import org.json.JSONArray;

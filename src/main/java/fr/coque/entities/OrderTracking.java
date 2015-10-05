@@ -5,8 +5,8 @@ package fr.coque.entities;
  * Created by marcd on 05/10/2015.
  */
 public class OrderTracking {
-    int orderId;
-    int state;
+    private int orderId;
+    private int state;
 
     public OrderTracking(int orderId){
         this.orderId = orderId;

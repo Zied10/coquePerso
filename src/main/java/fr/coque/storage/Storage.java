@@ -27,6 +27,24 @@ public class Storage {
 		orderTrackings.remove(id);
 	}
 
+	private static HashMap<Integer, Delivery> deliveries = new HashMap<Integer, Delivery>();
+
+	public static void createDelivery(int orderId, String address, int deliveryType){
+		deliveries.put(orderId, new Delivery(orderId, address, deliveryType));
+	}
+
+	public static Delivery getDelivery(int orderId){
+		return deliveries.get(orderId);
+	}
+
+	public static Collection<Delivery> getAlldeliveries(){
+		return deliveries.values();
+	}
+
+	public static void deleteDelivery(int orderId){
+		deliveries.remove(orderId);
+	}
+
 	// this mocks a database.
 	private static HashMap<String, User> users = new HashMap<String, User>();
 
