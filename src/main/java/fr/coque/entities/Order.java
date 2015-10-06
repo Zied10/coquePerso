@@ -17,8 +17,8 @@ public class Order {
     private List<Product> products;
     private float price;
     private int typeLivraison;
-    private String dateDeOrder;
-    private String dateDeLivraison;
+    private String dateOrder;
+    private String estimationArrivalDate;
     private int estimationAssemblyDuration;
     private int estimationDeliveryDuration;
 
@@ -32,10 +32,10 @@ public class Order {
         state = 0;
         this.products = products;
         this.typeLivraison = typeLivraison;
-        dateDeOrder = computeDateBeginOrder();
+        dateOrder = computeDateBeginOrder();
         estimationAssemblyDuration = computeEstimationAssemblyDuration();
         estimationDeliveryDuration = computeEstimationDeliveryDuration();
-        dateDeLivraison = computeDateDeLivraison();
+        estimationArrivalDate = computeDateDeLivraison();
         price = computeProductPrice();
     }
 
@@ -59,10 +59,10 @@ public class Order {
 
     public int computeEstimationDeliveryDuration(){
         int estim = 0;
-        if(typeLivraison != 1){
-            estim = 2;
-        } else{
+        if(typeLivraison == 0){
             estim = 5;
+        } else{
+            estim = 2;
         }
         return estim;
     }
@@ -79,11 +79,7 @@ public class Order {
         Calendar c = Calendar.getInstance();
         c.setTime(new Date());
         int estimProcessDuration = estimationAssemblyDuration + estimationDeliveryDuration;
-        if(typeLivraison == 1){
-            c.add(Calendar.DATE, estimProcessDuration);
-        } else {
-            c.add(Calendar.DATE, estimProcessDuration);
-        }
+        c.add(Calendar.DATE, estimProcessDuration);
         return sdf.format(c.getTime());
     }
 
@@ -120,7 +116,7 @@ public class Order {
     }
 
     public String getDateOrder(){
-        return dateDeOrder;
+        return dateOrder;
     }
 
     public int getTypeLivraison(){
@@ -128,7 +124,7 @@ public class Order {
     }
 
     public String getDateLivraison(){
-        return dateDeLivraison;
+        return estimationArrivalDate;
     }
 
     public String toString(){

@@ -1,5 +1,7 @@
 package fr.coque.entities;
 
+import fr.coque.storage.Storage;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -14,33 +16,43 @@ public class Delivery {
     private int deliveryType;
     private String orderDate;
     private String arrivalDate;
+    private int deliveryDuration;
     private int assemblyDuration;
 
     public Delivery(int orderId, String address, int deliveryType){
         this.orderId = orderId;
         this.address = address;
         this.deliveryType = deliveryType;
+        deliveryDuration = computeEstimationDeliveryDuration();
+        assemblyDuration = Storage.getOrderFromId(orderId).computeEstimationAssemblyDuration();
         orderDate = computeOrderDate();
         arrivalDate = computeArrivalDate();
         state = 0;
-    }
-
-    public String computeOrderDate(){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-        Calendar c = Calendar.getInstance();
-        c.setTime(new Date());
-        return sdf.format(c.getTime());
     }
 
     public String computeArrivalDate(){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         Calendar c = Calendar.getInstance();
         c.setTime(new Date());
-        if(deliveryType == 1){
-            c.add(Calendar.DATE, 2);
-        } else {
-            c.add(Calendar.DATE, 5);
+        int estimProcessDuration = deliveryDuration + assemblyDuration;
+        c.add(Calendar.DATE, estimProcessDuration);
+        return sdf.format(c.getTime());
+    }
+
+    public int computeEstimationDeliveryDuration(){
+        int estim = 0;
+        if(deliveryType == 0){
+            estim = 5;
+        } else{
+            estim = 2;
         }
+        return estim;
+    }
+
+    public String computeOrderDate(){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date());
         return sdf.format(c.getTime());
     }
 
@@ -58,6 +70,16 @@ public class Delivery {
 
     public int getState(){
         return state;
+    }
+
+    public void setAssemblyDuration(int newAssemblyDuration){
+        assemblyDuration = newAssemblyDuration;
+        arrivalDate = computeArrivalDate();
+    }
+
+    public void setDeliveryDuration(int newDeliveryDuration){
+        deliveryDuration = newDeliveryDuration;
+        arrivalDate = computeArrivalDate();
     }
 
     public String getArrivalDate(){
