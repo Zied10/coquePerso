@@ -116,6 +116,9 @@ public class Order {
         for(Product p : products){
             total += p.getPrice();
         }
+        if(typeLivraison != 0){
+            total += 5;
+        }
         return total;
     }
 
