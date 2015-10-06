@@ -74,15 +74,6 @@ public class DeliveriesServiceImpl implements DeliveriesService {
         return Response.ok().entity(delivery.getArrivalDate()).build();
     }
 
-    public Response setArrivalDate(int orderId, String arrivalDate) {
-        if(Storage.getDelivery(orderId) == null) {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        }
-        Delivery delivery = Storage.getDelivery(orderId);
-        delivery.setArrivalDate(arrivalDate);
-        return Response.ok().build();
-    }
-
     public Response getState(int orderId) {
         if(Storage.getDelivery(orderId) == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
@@ -91,12 +82,17 @@ public class DeliveriesServiceImpl implements DeliveriesService {
         return Response.ok().entity(delivery.getState()).build();
     }
 
-    public Response setState(int orderId, int state) {
+    public Response updateDelivery(int orderId, int state, String arrivalDate) {
         if(Storage.getDelivery(orderId) == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         Delivery delivery = Storage.getDelivery(orderId);
-        delivery.setState(state);
+        if(arrivalDate != null) {
+            delivery.setArrivalDate(arrivalDate);
+        }
+        if(state != 0) {
+            delivery.setState(state);
+        }
         return Response.ok().build();
     }
 }
