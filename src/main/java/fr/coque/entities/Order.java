@@ -14,12 +14,8 @@ public class Order {
     private int id;
     private static int nbOrdersTotale = 0;
     private int state;
-    private String address;
     private List<Product> products;
     private float price;
-    private int numCard;
-    private String expirationDate;
-    private int pictogram;
     private int typeLivraison;
     private String dateDeOrder;
     private String dateDeLivraison;
@@ -27,19 +23,12 @@ public class Order {
     public Order(int userId,
                  String address,
                  List<Product> products,
-                 int numCard,
-                 String expirationDate,
-                 int pictogram,
                  int typeLivraison){
         this.userId = userId;
         this.id = this.nbOrdersTotale;
         this.nbOrdersTotale++;
         state = 0;
-        this.address = address;
         this.products = products;
-        this.numCard = numCard;
-        this.expirationDate = expirationDate;
-        this.pictogram = pictogram;
         this.typeLivraison = typeLivraison;
         dateDeOrder = computeDateBeginOrder();
         dateDeLivraison = computeDateDeLivraison();
@@ -65,28 +54,16 @@ public class Order {
         return sdf.format(c.getTime());
     }
 
+    public List<Product> getProducts() {
+        return products;
+    }
+
     public int getId(){
         return id;
     }
 
     public int getUserId(){
         return userId;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public int getNumCard() {
-        return numCard;
-    }
-
-    public String getExpirationDate() {
-        return expirationDate;
-    }
-
-    public int getPictogram() {
-        return pictogram;
     }
 
     public static Integer getIdent(){
@@ -129,11 +106,7 @@ public class Order {
        return "{" +
                 "\"id\":" + getId() + "," +
                 "\"userId\":" + getUserId() + "," +
-                "\"address\":" + getAddress() + "," +
                 "\"state\":" + getState() + "," +
-                "\"numCard\":" + getNumCard() + "," +
-                "\"expirationDate\":" + getExpirationDate() + "," +
-                "\"pictogram\":" + getPictogram() + "," +
                 "\"dateOrder\":" + getDateOrder() + "," +
                 "\"dateLivraison\":" + getDateLivraison() + "," +
                 "\"typeLivraison\":" + getTypeLivraison() + "," +

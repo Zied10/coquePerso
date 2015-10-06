@@ -14,5 +14,10 @@ public interface AssemblyService {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createProduct(String jsonInput);
+    Response assembleProduct(String jsonInput);
+
+    @GET
+    Response getAssemblyDuration();
+
+
 }
