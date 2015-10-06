@@ -44,7 +44,7 @@ public class OrderServiceImpl implements OrderService {
         return Response.ok().entity(result.toString(2)).build();
     }
 
-    public Response getIdOrderFrom(int id) {
+    public Response getOrderFrom(int id) {
         if(Storage.getOrderFromId(id) == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
@@ -69,7 +69,7 @@ public class OrderServiceImpl implements OrderService {
         return Response.ok().entity(order.getState()).build();
     }
 
-    public Response getState(int id, int state) {
+    public Response setState(int id, int state) {
         if(Storage.getOrderFromId(id) == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }

@@ -22,7 +22,7 @@ public interface OrderService {
 
     @Path("/{id}")
     @GET
-    public Response getIdOrderFrom(@PathParam("id") int id);
+    public Response getOrderFrom(@PathParam("id") int id);
 
 
     @Path("/{id}")
@@ -35,5 +35,5 @@ public interface OrderService {
 
     @Path("/{id}")
     @PUT
-    public Response getState(@PathParam("id") int id, @QueryParam("state") int state);
+    public Response setState(@PathParam("id") int id, @QueryParam("state") int state);
 }
