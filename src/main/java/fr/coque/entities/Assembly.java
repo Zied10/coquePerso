@@ -16,6 +16,7 @@ public class Assembly {
         computeAssemblyDuration();
         woodNeeded = Storage.getOrderFromId(orderId).getProducts().size();
         state = 0;
+        // retrait de woodNeed quantité de bois ici
     }
 
     public int getOrderId() {

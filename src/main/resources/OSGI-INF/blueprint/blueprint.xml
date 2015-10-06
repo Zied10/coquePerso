@@ -32,6 +32,7 @@ http://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/ja
             <ref component-id="delivery"/>
             <ref component-id="catalog"/>
             <ref component-id="assembly"/>
+            <ref component-id="managementStock"/>
         </jaxrs:serviceBeans>
     </jaxrs:server>
 
@@ -42,5 +43,6 @@ http://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/ja
     <bean id="delivery" class="fr.coque.services.DeliveriesServiceImpl"/>
     <bean id="catalog" class="fr.coque.services.CatalogServiceImpl"/>
     <bean id="assembly" class="fr.coque.services.AssemblyServiceImpl"/>
+    <bean id="managementStock" class="fr.coque.services.ManagementStockServiceImpl"/>
 
 </blueprint>

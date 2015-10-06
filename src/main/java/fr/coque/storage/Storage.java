@@ -45,6 +45,16 @@ public class Storage {
 		deliveries.remove(orderId);
 	}
 
+	public static int woodQuantity;
+
+	public static int getWoodQuantity(){
+		return woodQuantity;
+	}
+
+	public static void setWoodQuantity(int newWoodQuantity){
+		woodQuantity = newWoodQuantity;
+	}
+
 	// this mocks a database.
 	private static HashMap<String, User> users = new HashMap<String, User>();
 
@@ -149,6 +159,8 @@ public class Storage {
 
 
 	static {
+		woodQuantity = 100;
+
 		Storage.createUser("zizou");
 		Storage.createUser("marco");
 		Storage.createUser("jpp");
