@@ -7,12 +7,20 @@ import fr.coque.storage.Storage;
  */
 public class Assembly {
     private int duration;
+    private int state;
     private int orderId;
-    Assembly(int orderId){
+
+    public Assembly(int orderId){
         this.orderId = orderId;
+        computeAssemblyDuration();
+        state = 0;
     }
 
-    public int getAssemblyDuration(){
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public int computeAssemblyDuration(){
         Order order = Storage.getOrderFromId(orderId);
         int nbProducts = order.getProducts().size();
         if(nbProducts == 1) {
@@ -30,8 +38,27 @@ public class Assembly {
         }
         return duration;
     }
+    public int getAssemblyDuration(){
+        return duration;
+    }
 
     public void setAssemblyDuration(int duration){
         this.duration = duration;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
+
+    public String toString(){
+        return "{" +
+                "\"orderId\":" + getOrderId() + "," +
+                "\"duration\":" + getAssemblyDuration() + "," +
+                "\"state\":" + getState() +
+                "}";
     }
 }

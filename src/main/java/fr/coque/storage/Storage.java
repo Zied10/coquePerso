@@ -132,6 +132,22 @@ public class Storage {
 		payments.remove(id);
 	}
 
+	private static HashMap<Integer, Assembly> assemblies = new HashMap<Integer, Assembly>();
+
+	public static void createAssembly(int orderId){
+		assemblies.put(orderId, new Assembly(orderId));
+	}
+
+	public static Assembly getAssemblyById(int orderId){
+		return assemblies.get(orderId);
+	}
+
+	public static Collection<Assembly> getAllAssembly(){
+		return assemblies.values();
+	}
+
+
+
 	static {
 		Storage.createUser("zizou");
 		Storage.createUser("marco");

@@ -17,7 +17,18 @@ public interface AssemblyService {
     Response assembleProduct(String jsonInput);
 
     @GET
-    Response getAssemblyDuration();
+    @Path("/duration/{orderId}")
+    Response getAssemblyDurationById(@PathParam("orderId") int orderId);
 
 
+    @GET
+    Response getAllAssemblies();
+
+    @GET
+    @Path("/{orderId}")
+    Response getAssemblyFromId(@PathParam("orderId") int orderId);
+
+    @PUT
+    @Path("/{orderId}")
+    Response updateAssembly(@PathParam("orderId") int orderId, @QueryParam("duration") int duration, @QueryParam("state") int state);
 }
