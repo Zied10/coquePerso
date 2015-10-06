@@ -58,7 +58,9 @@ public class OrderTrackingServiceImpl implements OrderTrackingService {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         OrderTracking orderTracking = Storage.getOrderTracking(orderId);
-        orderTracking.setState(state);
+        if(state != 0) {
+            orderTracking.setState(state);
+        }
         return Response.ok().build();
     }
 }

@@ -72,13 +72,9 @@ public class Storage {
 
 	public static void createOrder(int orderId,
 									  int userId,
-									  String address,
 									  List<Product> products,
-									  int numCard,
-									  String expirationDate,
-									  int pictogram,
 									  int typeLivraison){
-		orders.put(orderId, new Order(userId, address, products, numCard, expirationDate, pictogram, typeLivraison));
+		orders.put(orderId, new Order(userId, products, typeLivraison));
 	}
 
 	public static Collection<Order> getAllOrders(){

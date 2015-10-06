@@ -19,9 +19,11 @@ public class Order {
     private int typeLivraison;
     private String dateDeOrder;
     private String dateDeLivraison;
+    private int estimationAssemblyDuration;
+    private int estimationDeliveryDuration;
+
 
     public Order(int userId,
-                 String address,
                  List<Product> products,
                  int typeLivraison){
         this.userId = userId;
@@ -31,8 +33,38 @@ public class Order {
         this.products = products;
         this.typeLivraison = typeLivraison;
         dateDeOrder = computeDateBeginOrder();
+        estimationAssemblyDuration = computeEstimationAssemblyDuration();
+        estimationDeliveryDuration = computeEstimationDeliveryDuration();
         dateDeLivraison = computeDateDeLivraison();
         price = computeProductPrice();
+    }
+
+    public int computeEstimationAssemblyDuration(){
+        int nbProducts = products.size();
+        if(nbProducts == 1) {
+            estimationAssemblyDuration = 1;
+        } else if(nbProducts == 2){
+            estimationAssemblyDuration = 2;
+        } else if(nbProducts < 5){
+            estimationAssemblyDuration = 3;
+        } else if(nbProducts < 20){
+            estimationAssemblyDuration = 5;
+        } else if(nbProducts < 50){
+            estimationAssemblyDuration = 8;
+        } else{
+            estimationAssemblyDuration = 15;
+        }
+        return estimationAssemblyDuration;
+    }
+
+    public int computeEstimationDeliveryDuration(){
+        int estim = 0;
+        if(typeLivraison != 1){
+            estim = 2;
+        } else{
+            estim = 5;
+        }
+        return estim;
     }
 
     public String computeDateBeginOrder(){
@@ -46,10 +78,11 @@ public class Order {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         Calendar c = Calendar.getInstance();
         c.setTime(new Date());
+        int estimProcessDuration = estimationAssemblyDuration + estimationDeliveryDuration;
         if(typeLivraison == 1){
-            c.add(Calendar.DATE, 2);
+            c.add(Calendar.DATE, estimProcessDuration);
         } else {
-            c.add(Calendar.DATE, 5);
+            c.add(Calendar.DATE, estimProcessDuration);
         }
         return sdf.format(c.getTime());
     }
