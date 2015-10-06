@@ -74,6 +74,14 @@ public class DeliveriesServiceImpl implements DeliveriesService {
         return Response.ok().entity(delivery.getArrivalDate()).build();
     }
 
+    public Response getDeliveryDuration(int orderId) {
+        if(Storage.getDelivery(orderId) == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        Delivery delivery = Storage.getDelivery(orderId);
+        return Response.ok().entity(delivery.getDeliveryDuration()).build();
+    }
+
     public Response getState(int orderId) {
         if(Storage.getDelivery(orderId) == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
@@ -82,7 +90,7 @@ public class DeliveriesServiceImpl implements DeliveriesService {
         return Response.ok().entity(delivery.getState()).build();
     }
 
-    public Response updateDelivery(int orderId, int state, String arrivalDate) {
+    public Response updateDelivery(int orderId, int state, String arrivalDate, int deliveryDuration) {
         if(Storage.getDelivery(orderId) == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
@@ -92,6 +100,9 @@ public class DeliveriesServiceImpl implements DeliveriesService {
         }
         if(state != 0) {
             delivery.setState(state);
+        }
+        if(deliveryDuration != 0){
+            delivery.setDeliveryDuration(deliveryDuration);
         }
         return Response.ok().build();
     }

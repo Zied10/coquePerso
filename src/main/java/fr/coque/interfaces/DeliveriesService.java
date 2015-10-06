@@ -35,6 +35,10 @@ public interface DeliveriesService {
     @GET
     Response getArrivalDate(@PathParam("orderId") int orderId);
 
+    @Path("/{orderId}/deliveryDuration")
+    @GET
+    Response getDeliveryDuration(@PathParam("orderId") int orderId);
+
     @Path("/{orderId}/state")
     @GET
     Response getState(@PathParam("orderId") int orderId);
@@ -43,5 +47,6 @@ public interface DeliveriesService {
     @PUT
     Response updateDelivery(@PathParam("orderId") int orderId,
                             @QueryParam("state") int state,
-                            @QueryParam("arrivalDate") String arrivalDate);
+                            @QueryParam("arrivalDate") String arrivalDate,
+                            @QueryParam("deliveryDuration") int deliveryDuration);
 }
