@@ -82,6 +82,10 @@ public class Delivery {
         arrivalDate = computeArrivalDate();
     }
 
+    public int getDeliveryDuration(){
+        return deliveryDuration;
+    }
+
     public String getArrivalDate(){
         return arrivalDate;
     }
