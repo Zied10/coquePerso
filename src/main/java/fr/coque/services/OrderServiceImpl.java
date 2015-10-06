@@ -28,9 +28,10 @@ public class OrderServiceImpl implements OrderService {
             productList.add(tmp);
 
         }
-        Storage.createOrder(Order.getIdent(), jsonObj.getInt("clientId"),
-                jsonObj.getString("address"), productList, jsonObj.getInt("numCard"),
-                jsonObj.getString("expirationDate"), jsonObj.getInt("pictogram"), jsonObj.getInt("livraison"));
+        Storage.createOrder(Order.getIdent(),
+                jsonObj.getInt("clientId"),
+                productList,
+                jsonObj.getInt("livraison"));
         return Response.ok().build();
     }
 
@@ -73,7 +74,9 @@ public class OrderServiceImpl implements OrderService {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         Order order = Storage.getOrderFromId(id);
-        order.setState(state);
+        if(state != 0) {
+            order.setState(state);
+        }
         return Response.ok().build();
     }
 }

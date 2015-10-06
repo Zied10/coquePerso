@@ -63,7 +63,7 @@ public class DeliveriesServiceImpl implements DeliveriesService {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         Delivery delivery = Storage.getDelivery(orderId);
-        return Response.ok().entity(delivery.getDepartureDate()).build();
+        return Response.ok().entity(delivery.getOrderDate()).build();
     }
 
     public Response getArrivalDate(int orderId) {

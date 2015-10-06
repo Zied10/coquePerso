@@ -12,19 +12,20 @@ public class Delivery {
     private String address;
     private int state;
     private int deliveryType;
-    private String departureDate;
+    private String orderDate;
     private String arrivalDate;
+    private int assemblyDuration;
 
     public Delivery(int orderId, String address, int deliveryType){
         this.orderId = orderId;
         this.address = address;
         this.deliveryType = deliveryType;
-        departureDate = computeDepartureDate();
+        orderDate = computeOrderDate();
         arrivalDate = computeArrivalDate();
         state = 0;
     }
 
-    public String computeDepartureDate(){
+    public String computeOrderDate(){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         Calendar c = Calendar.getInstance();
         c.setTime(new Date());
@@ -71,8 +72,8 @@ public class Delivery {
         return deliveryType;
     }
 
-    public String getDepartureDate(){
-        return departureDate;
+    public String getOrderDate(){
+        return orderDate;
     }
 
     public String toString(){
@@ -80,7 +81,7 @@ public class Delivery {
                 "\"orderId\":" + getOrderId() + "," +
                 "\"address\":" + getAddress() + "," +
                 "\"arrivalDate\":" + getArrivalDate() + "," +
-                "\"departureDate\":" + getDepartureDate() + "," +
+                "\"orderDate\":" + getOrderDate() + "," +
                 "\"deliveryType\":" + getDeliveryType() + "," +
                 "\"state\":" + getState() +
                 "}";

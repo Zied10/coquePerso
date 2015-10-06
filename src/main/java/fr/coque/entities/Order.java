@@ -14,36 +14,57 @@ public class Order {
     private int id;
     private static int nbOrdersTotale = 0;
     private int state;
-    private String address;
     private List<Product> products;
     private float price;
-    private int numCard;
-    private String expirationDate;
-    private int pictogram;
     private int typeLivraison;
     private String dateDeOrder;
     private String dateDeLivraison;
+    private int estimationAssemblyDuration;
+    private int estimationDeliveryDuration;
+
 
     public Order(int userId,
-                 String address,
                  List<Product> products,
-                 int numCard,
-                 String expirationDate,
-                 int pictogram,
                  int typeLivraison){
         this.userId = userId;
         this.id = this.nbOrdersTotale;
         this.nbOrdersTotale++;
         state = 0;
-        this.address = address;
         this.products = products;
-        this.numCard = numCard;
-        this.expirationDate = expirationDate;
-        this.pictogram = pictogram;
         this.typeLivraison = typeLivraison;
         dateDeOrder = computeDateBeginOrder();
+        estimationAssemblyDuration = computeEstimationAssemblyDuration();
+        estimationDeliveryDuration = computeEstimationDeliveryDuration();
         dateDeLivraison = computeDateDeLivraison();
         price = computeProductPrice();
+    }
+
+    public int computeEstimationAssemblyDuration(){
+        int nbProducts = products.size();
+        if(nbProducts == 1) {
+            estimationAssemblyDuration = 1;
+        } else if(nbProducts == 2){
+            estimationAssemblyDuration = 2;
+        } else if(nbProducts < 5){
+            estimationAssemblyDuration = 3;
+        } else if(nbProducts < 20){
+            estimationAssemblyDuration = 5;
+        } else if(nbProducts < 50){
+            estimationAssemblyDuration = 8;
+        } else{
+            estimationAssemblyDuration = 15;
+        }
+        return estimationAssemblyDuration;
+    }
+
+    public int computeEstimationDeliveryDuration(){
+        int estim = 0;
+        if(typeLivraison != 1){
+            estim = 2;
+        } else{
+            estim = 5;
+        }
+        return estim;
     }
 
     public String computeDateBeginOrder(){
@@ -57,10 +78,11 @@ public class Order {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         Calendar c = Calendar.getInstance();
         c.setTime(new Date());
+        int estimProcessDuration = estimationAssemblyDuration + estimationDeliveryDuration;
         if(typeLivraison == 1){
-            c.add(Calendar.DATE, 2);
+            c.add(Calendar.DATE, estimProcessDuration);
         } else {
-            c.add(Calendar.DATE, 5);
+            c.add(Calendar.DATE, estimProcessDuration);
         }
         return sdf.format(c.getTime());
     }
@@ -71,22 +93,6 @@ public class Order {
 
     public int getUserId(){
         return userId;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public int getNumCard() {
-        return numCard;
-    }
-
-    public String getExpirationDate() {
-        return expirationDate;
-    }
-
-    public int getPictogram() {
-        return pictogram;
     }
 
     public static Integer getIdent(){
@@ -129,11 +135,7 @@ public class Order {
        return "{" +
                 "\"id\":" + getId() + "," +
                 "\"userId\":" + getUserId() + "," +
-                "\"address\":" + getAddress() + "," +
                 "\"state\":" + getState() + "," +
-                "\"numCard\":" + getNumCard() + "," +
-                "\"expirationDate\":" + getExpirationDate() + "," +
-                "\"pictogram\":" + getPictogram() + "," +
                 "\"dateOrder\":" + getDateOrder() + "," +
                 "\"dateLivraison\":" + getDateLivraison() + "," +
                 "\"typeLivraison\":" + getTypeLivraison() + "," +
