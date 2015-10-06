@@ -33,7 +33,7 @@ public interface OrderService {
     @GET
     public Response getState(@PathParam("id") int id);
 
-    @Path("/{id}/{state}")
+    @Path("/{id}")
     @PUT
-    public Response getState(@PathParam("id") int id, @PathParam("state") int state);
+    public Response getState(@PathParam("id") int id, @QueryParam("state") int state);
 }
