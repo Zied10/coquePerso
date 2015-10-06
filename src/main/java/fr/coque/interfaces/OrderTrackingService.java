@@ -19,10 +19,6 @@ public interface OrderTrackingService {
     @GET
     Response getAllOrderTracking();
 
-    /*@Path("/{orderId}")
-    @GET
-    Response getOrderId(@PathParam("orderId") int orderId);*/
-
     @Path("/{orderId}")
     @DELETE
     Response deleteOrderTracking(@PathParam("orderId") int orderId);
@@ -31,7 +27,7 @@ public interface OrderTrackingService {
     @GET
     Response getState(@PathParam("orderId") int orderId);
 
-    @Path("/{orderId}/{state}")
+    @Path("/{orderId}")
     @PUT
-    Response setState(@PathParam("orderId") int orderId, @PathParam("state") int state);
+    Response setState(@PathParam("orderId") int orderId, @QueryParam("state") int state);
 }

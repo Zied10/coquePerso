@@ -37,10 +37,6 @@ public class OrderTrackingServiceImpl implements OrderTrackingService {
         return Response.ok().entity(result.toString(2)).build();
     }
 
-    /*public Response getOrderId(int orderId) {
-        return null;
-    }*/
-
     public Response deleteOrderTracking(int orderId) {
         if(Storage.getOrderTracking(orderId) == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
