@@ -9,10 +9,12 @@ public class Assembly {
     private int duration;
     private int state;
     private int orderId;
+    private int woodNeeded;
 
     public Assembly(int orderId){
         this.orderId = orderId;
         computeAssemblyDuration();
+        woodNeeded = Storage.getOrderFromId(orderId).getProducts().size();
         state = 0;
     }
 
@@ -54,11 +56,16 @@ public class Assembly {
         this.state = state;
     }
 
+    public int getWoodNeeded() {
+        return woodNeeded;
+    }
+
     public String toString(){
         return "{" +
                 "\"orderId\":" + getOrderId() + "," +
                 "\"duration\":" + getAssemblyDuration() + "," +
                 "\"state\":" + getState() +
+                "\"woodNeeded\":" + getWoodNeeded() +
                 "}";
     }
 }
